@@ -54,7 +54,7 @@ class FruitsVegCNN(nn.Module):
 model_path = "fruitveg_final.pth"
 print(f"Loading model from: {os.path.abspath(model_path)}")
 model = FruitsVegCNN()    
-model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu'), weights_only='True'))
+model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu'), weights_only=True))
 model.eval()
 
 transforms = tt.Compose([
