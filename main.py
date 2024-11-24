@@ -8,7 +8,7 @@ classes.sort()
 
 import torch
 import torch.nn as nn
-import numpy as np
+import os
 from PIL import Image
 import torchvision.transforms as tt
 import torch.nn.functional as F
@@ -51,8 +51,10 @@ class FruitsVegCNN(nn.Module):
         return self.network(xb)
 
 
+model_path = "fruitveg_final.pth"
+print(f"Loading model from: {os.path.abspath(model_path)}")
 model = FruitsVegCNN()    
-model.load_state_dict(torch.load('fruitveg_final.pth', map_location=torch.device('cpu')))
+model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
 model.eval()
 
 transforms = tt.Compose([
